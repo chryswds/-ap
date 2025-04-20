@@ -7,20 +7,16 @@ export default defineConfig({
     react(),
     electron({
       entry: "electron/main.cjs",
+      vite: {
+        build: {
+          outDir: "dist/electron",
+        },
+      },
     }),
   ],
-  base: process.env.ELECTRON === "true" ? "./" : "/",
-  build: {
-    outDir: "dist",
-    emptyOutDir: true,
-  },
-  resolve: {
-    alias: {
-      "@": "/src",
-    },
-  },
   server: {
-    port: 3000,
-    strictPort: true,
+    host: true,
+    port: 5173,
+    open: false,
   },
 });
