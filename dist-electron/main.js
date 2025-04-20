@@ -12,8 +12,8 @@ function requireMain() {
   const path = require$$1;
   function createWindow() {
     const win = new BrowserWindow({
-      width: 800,
-      height: 600,
+      width: 1024,
+      height: 768,
       webPreferences: {
         nodeIntegration: false,
         contextIsolation: true,
