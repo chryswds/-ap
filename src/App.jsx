@@ -1,21 +1,22 @@
 import { useState } from "react";
 import WeekSelector from "./components/WeekSelector";
 import DailyEntryForm from "./components/DailyForm";
+import WeeklyOverview from "./components/WeeklyOverview";
 
 function App() {
   const [weekRange, setWeekRange] = useState({
     startDate: null,
     endDate: null,
   });
+  const [weekData, setWeekData] = useState(null);
 
   const handleWeekChange = (startDate, endDate) => {
     setWeekRange({ startDate, endDate });
-    console.log("Week Start:", startDate);
-    console.log("Week End:", endDate);
+    setWeekData(null); // Reset week data when changing weeks
   };
 
   const handleDailyEntrySubmit = (data) => {
-    console.log("Daily Entry Data:", data);
+    setWeekData(data);
   };
 
   return (
@@ -23,6 +24,7 @@ function App() {
       <h1 className="text-2xl font-bold mb-4">Hour Tracking App</h1>
       <WeekSelector onWeekChange={handleWeekChange} />
       <DailyEntryForm weekRange={weekRange} onSubmit={handleDailyEntrySubmit} />
+      {weekData && <WeeklyOverview weekData={weekData} />}
     </div>
   );
 }

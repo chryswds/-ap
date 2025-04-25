@@ -23,18 +23,20 @@ function createWindow() {
   });
 }
 
-const gotTheLock = app.requestSingleInstanceLock();
+// const gotTheLock = app.requestSingleInstanceLock();
 
-if (!gotTheLock) {
-  app.quit();
-} else {
-  app.on("second-instance", () => {
-    if (mainWindow) {
-      if (mainWindow.isMinimized()) mainWindow.restore();
-      mainWindow.focus();
-    }
-  });
-}
+// if (!gotTheLock) {
+//   app.quit();
+// } else {
+//   app.on("second-instance", () => {
+//     if (mainWindow) {
+//       if (mainWindow.isMinimized()) mainWindow.restore();
+//       mainWindow.focus();
+//     }
+//   });
+// }
+
+
 app.whenReady().then(createWindow);
 
 app.on("activate", () => {
